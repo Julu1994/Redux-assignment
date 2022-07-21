@@ -18,6 +18,7 @@ const Cart = (props) => {
                             quantity={items.quantity}
                             total={items.total}
                             price={items.price}
+                            removeObj={items}
                         />
                     );
                 })}

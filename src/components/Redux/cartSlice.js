@@ -26,6 +26,22 @@ const cartSlice = createSlice({
                 existedItem.total = existedItem.total + Newitem.price;
             }
         },
+        RemovingFromCart(state, action) {
+            state.totalQuantity = state.totalQuantity - 1;
+            const removingItem = action.payload;
+            if (removingItem.quantity == 1) {
+                state.products = state.products.filter(
+                    (i) => i.id !== removingItem.id
+                );
+            } else {
+                const deductingProduct = state.products.find(
+                    (i) => i.id == removingItem.id
+                );
+                deductingProduct.quantity = deductingProduct.quantity - 1;
+                deductingProduct.total =
+                    deductingProduct.total - deductingProduct.price;
+            }
+        },
     },
 });
 
